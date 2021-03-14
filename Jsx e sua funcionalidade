@@ -1,0 +1,12 @@
+//para usar jsx eu sempre tenho que importar esses dois elementos abaixos
+import React from 'react'
+import { Text } from 'react-native'
+
+function Teste(){
+   return <Text>Primeiro teste</Text>   
+}
+
+export default Teste
+
+//jsx = parece html, mais na web é javascript e vai transformar em componente html
+// com o jsx consigo colocar tags como html
