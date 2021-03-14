@@ -1,0 +1,46 @@
+via de regra não vamos colocar mais de um componente por arquivo porém da para ser feito !!
+
+dentro da pasta "src" criamos o modulo "multi.js"
+
+dentro do multi.js \/
+//veja que podemos importar mais de 1 componente
+
+import React from 'react'
+import { Text } from 'react-native'
+
+//tomar cuidado pois se eu deixo essa function com nome na hora de importar no app.js e eu colocar outro nome, o outro nome que sera o oficial
+export default function () { //componente oficial
+    return <Text>Componente oficial</Text>
+}
+
+export function Comp1() {
+    return <Text>Comp #01</Text>
+}
+export function Comp2() { //quando eu tenho uma função nomeada eu posso apenas colocar export 
+    return <Text>Comp #02</Text>    
+}
+
+// export { Comp1, Comp2} exportando mais de uma função
+// export default Comp
+
+
+veja como fica no app.js \/
+
+import React from 'react'
+import { Text } from 'react-native'
+import { View } from 'react-native' //esse é um import super importante !!! para efeitos visuais
+
+import CompOficial ,{Comp1, Comp2} from './components/Multi' //para exporta uma export function nomiada !! "CompOficial uma function normal"
+import Primeiro from './components/Primeiro' //como eu usei export default aqui eu precispo por um nome para ele
+
+
+export default () => ( 
+   <View>
+      <CompOficial />
+      <Comp1 />
+      <Comp2 />
+      <Text>{ 1 + 1 }</Text> 
+      <Primeiro /> 
+      {/* <Primeiro /> */} 
+   </View> 
+)
