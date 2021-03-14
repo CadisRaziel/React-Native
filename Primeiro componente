@@ -1,0 +1,31 @@
+Dentro da pasta "src" criamos uma pasta "components" e dentro dela o modulo "Primeiro.js"
+
+dentro do Primeiro.js \/
+
+import React from 'react'
+import { Text } from 'react-native'
+
+export default () => <Text>Acessando Primeiro a partir do app.js</Text>
+
+
+em seguida importamos ele para o App.js \/
+
+
+import React from 'react'
+import { Text } from 'react-native'
+import { View } from 'react-native' //esse é um import super importante !!! para efeitos visuais
+
+//o import de Primeiro.js esta aqui \/
+import Primeiro from './components/Primeiro' //como eu usei export default aqui eu precispo por um nome para ele
+
+
+//repare que pra min usa o Primeiro.js eu preciso apenas usar o nome dele   
+//repare que o que esta dentro de {} envolvido por Text é interpretado como JS e feito a soma !! 
+//olhe como é feito o comentario (CTRL + / e para desfazer CTRL + /)
+export default () => ( 
+   <View>
+      <Text>{ 1 + 1 }</Text> 
+      <Primeiro /> 
+      {/* <Primeiro /> */} 
+   </View> 
+)
