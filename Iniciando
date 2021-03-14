@@ -1,0 +1,6 @@
+Abra o terminal e digite "studio.sh", isso vai abrir o android studio, nas conigurações do android studio clique em AVD manager para abrir o emulador(abra ele)
+em seguida crie uma pasta em algum lugar e entre nessa pasta pelo terminal e digite "npx react-native init NOME DO PROJETO"
+em seguida no terminal vá ate a pasta criada e digite "npx react-native start"
+em quanto o arquivo compila abra outra aba no terminal e digite "npx react-native run-android"
+e pronto é só olhar no emulador o projeto do react abrindo
+aproveite o terminal e digite "code ." para abrir o vs code
