@@ -1,0 +1,46 @@
+//para usar jsx eu sempre tenho que importar esses dois elementos abaixos
+import React from 'react'
+import { Text } from 'react-native'
+
+//Observação importante eu só posso exporta apenas 1 function !!!!!!!
+//esses 5 modelos abaixo de function são aceitos !
+
+
+function Teste(){
+   return <Text>Função normal</Text>   
+}
+
+
+//-------------------
+//posso salvar ela em uma const
+//const Teste1 = function (){
+   //return <Text>Função anonima</Text>
+//}
+
+
+
+//-------------------
+//posso exporta uma function anonima direto !!!
+//export default function (){
+   //return <Text>Posso exporta uma função direto !!</Text>
+//}
+
+
+//-------------------
+//podemos fazer arrow function
+//export default () => {
+   //return <Text>Posso fazer arrow function!!</Text>
+//}
+
+
+//-------------------
+//podemos fazer arrow function mais simples ainda
+//export default () => <Text> Posso deixar tudo numa linha </Text>
+//lembrando que arrow function em 1 linha ele ja tem return automatico
+
+
+// export default Teste1
+export default Teste
+
+//jsx = parece html, mais na web é javascript e vai transformar em componente html
+// com o jsx consigo colocar tags como html
