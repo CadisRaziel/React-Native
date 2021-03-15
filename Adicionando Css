@@ -1,0 +1,57 @@
+
+
+import React from 'react'
+import { Text } from 'react-native'
+import { View, StyleSheet } from 'react-native' //StyleSheet é tipo css
+
+import CompOficial ,{Comp1, Comp2} from './components/Multi' //para exporta uma export function nomiada !! 
+import Primeiro from './components/Primeiro' //como eu usei export default aqui eu precispo por um nome para ele
+
+export default () => ( 
+   <View style={style.NomeQueEuQueira}>    //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< crio ele numa const ali em baixo e depois coloco o stylo aqui !!!!!
+      <CompOficial />
+      <Comp1 />
+      <Comp2 />
+      <Text>{ 1 + 1 }</Text> 
+      <Primeiro /> 
+      {/* <Primeiro /> */} 
+   </View> 
+)
+
+//quando eu coloco backgroundcolor ele só preenche aonde esta os componentes
+//porém se eu coloco flex: 1, a gente ta dizendo a ele que ele pode crescer
+//flexGrow: 1, ele vai pegar a tela toda 
+//justifyContente: para alinhar no centro por exemplo
+//alignItems = para alinhas as laterais
+const style = StyleSheet.create({
+   NomeQueEuQueira: {
+      backgroundColor: '#DDA0DD',
+      flex: 1,      
+      justifyContent: "center",
+      alignItems: "center"
+   }
+})
+
+
+
+
+ou posso fazer assim, criei um arquivo na pasta "src" que chama "estilo.js"
+dentro do estilo.js \/
+
+import { StyleSheet } from 'react-native'
+
+export default StyleSheet.create({
+    exercicio: {
+        fontSize: 24       
+    }
+})
+
+
+em seguida fui ate o modulo Primeiro.js e importei ele
+dentro do Primeiro.js \/
+
+import React from 'react'
+import { Text } from 'react-native'
+import Estilo from './estilo' //<<<<<<<< AQUI EU IMPORTEI 
+
+export default () => <Text style={Estilo.exercicio}>Acessando Primeiro a partir do app.js</Text> //<<<<<<< veja que coloquei dentro da tag text style={Estilo.exercicio}
