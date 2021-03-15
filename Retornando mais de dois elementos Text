@@ -1,0 +1,51 @@
+dentro da "src" e "components" criamos o modulo Titulo.js
+
+
+dentro do Titulo.js \/
+
+import React from 'react' //posso por o Fragment aqui e só por <React> la em baixo "import React, { Fragment } from 'react'"
+import { View, Text } from 'react-native'
+import Estilo from './estilo'
+
+export default props => ( 
+    //para exibir "retornar" mais de dois elementos (tipo o TEXT) é necessario por dentro de uma VIEW
+    //se não colocar em uma VIEW vai dar erro do jsx !!!
+    //Posso subistituir o  view por "<React.Fragment" = porém é retorno de 2 textos e naõ retorno de IOS ou ANDROID, da diferença visual
+    //posso trocar o View por "<> </>" que é um conceito de fragment
+        <View>
+            <Text style={Estilo.exercicio}>{props.principal} </Text>
+            <Text>{props.secundario} </Text>
+        </View>    
+)
+
+
+Dentro de App.js \/
+
+import React from 'react'
+import { Text } from 'react-native'
+import { View, StyleSheet } from 'react-native' //StyleSheet é tipo css
+
+import Titulo from './components/Titulo'
+
+//repare que pra min usa o Primeiro.js eu preciso apenas usar o nome dele   
+//repare que o que esta dentro de {} envolvido por Text é interpretado como JS e feito a soma !! 
+//olhe como é feito o comentario (CTRL + / e para desfazer CTRL + /)
+export default () => ( 
+   <View style={style.NomeQueEuQueira}>
+      
+      <Titulo principal="Cadastro de produto"
+              secundario="Tela de cadastro"/>
+   </View>
+   
+ )
+
+
+const style = StyleSheet.create({
+   NomeQueEuQueira: {
+      backgroundColor: '#FFFAFA',
+      flex: 1,      
+      justifyContent: "center",
+      alignItems: "center",
+      padding: 20
+   }
+})
