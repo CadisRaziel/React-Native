@@ -1,0 +1,55 @@
+dentro da pasta "src" e "components" criamos o modulo Contador.js
+
+
+dentro de contador.js \/
+
+import React, { useState } from 'react' //useState um hook para modificar a variavel e apresentar na tela
+import { Text, Button } from 'react-native'
+import Estilo from './estilo'
+
+
+export default props => {
+    //let numero = props.inicial
+    //useState vai retornar um valor e uma function !! (primeiro um valor e depois a function)
+    //sem o useState ele não iria diminuir um numero e não iria aumentar o numero quando eu clicasse no + ou -
+    //resumindo ele abaixo esta retornando primeiro o valor"numero" e depois a função"setNumero"  
+    //o valor para somente leitura e a função para alterar o valor
+    const [numero, setNumero] = useState(props.inicial)
+
+    const inc = () => setNumero(numero + 1)      
+    const dec = () => setNumero(numero - 1)
+    
+    return (
+        <>
+        <Text style={Estilo.exercicio}>{numero}</Text>
+        <Button title="+" onPress={inc}></Button>
+        <Button title="-" onPress={dec}></Button>
+        </>
+    )
+}
+
+dentro de app.js \/
+
+
+import React from 'react'
+import { Text } from 'react-native'
+import { View, StyleSheet } from 'react-native' //StyleSheet é tipo css
+
+import Contador from './components/Contador'
+
+export default () => ( 
+   <View style={style.NomeQueEuQueira}>
+
+      <Contador inicial={100} />
+      
+  </View>   
+  
+  const style = StyleSheet.create({
+   NomeQueEuQueira: {
+      backgroundColor: '#FFFAFA',
+      flex: 1,      
+      justifyContent: "center",
+      alignItems: "center",
+      padding: 20
+   }
+})
