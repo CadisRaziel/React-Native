@@ -1,0 +1,51 @@
+
+Dentro de "src" "components" criamos o modulo "MinMax.js"
+
+dentro do minmax.js \/
+
+import React from 'react'
+import { Text } from 'react-native'
+import Estilo from './estilo'
+
+//o props é uma forma de escrever param, sempre utilizar props para passar os parametros
+//veja dentro do Text como eu pego os parametros que estão no "app.js"
+//parametros
+export default (props) =>        
+        <Text style={Estilo.exercicio}>
+            O valor { props.max } é maior que o valor { props.min }
+        </Text>
+    
+
+
+
+//dentro do App.js \/
+
+//Quando fazemos isso "<MinMax />" nós estamos instanciando um componente e esse componente pode ser usado, mais de uma vez dentro da nossa aplicação !
+
+import React from 'react'
+import { Text } from 'react-native'
+import { View, StyleSheet } from 'react-native' //StyleSheet é tipo css
+
+import MinMax from './components/MinMax'
+
+export default () => ( 
+   <View style={style.NomeQueEuQueira}>
+      {/* //passando parametros para o modulo MinMax olhe la */}
+      {/* //para passar valor numerico tem que ser colocando entre {} */}
+      <MinMax min={3} max={30}/>
+      <MinMax min={5} max={50}/>
+      
+   </View> 
+)
+
+
+const style = StyleSheet.create({
+   NomeQueEuQueira: {
+      backgroundColor: '#FFFAFA',
+      flex: 1,      
+      justifyContent: "center",
+      alignItems: "center",
+      padding: 20
+   }
+})
+
