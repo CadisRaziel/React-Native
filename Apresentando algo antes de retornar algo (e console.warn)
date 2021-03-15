@@ -1,0 +1,12 @@
+import React from 'react'
+import { Text } from 'react-native'
+import Estilo from './estilo'
+
+
+//repare que eu posso colocar algo para aparecer antes do return, que no caso aqui e o console.warn
+export default () => {
+    // console.warn('Opa!') //coloca uma barra de alerta 
+    return (
+    <Text style={Estilo.exercicio}>Acessando Primeiro a partir do app.js</Text>
+    )
+}
