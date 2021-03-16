@@ -1,0 +1,68 @@
+Criamos uma pasta dentro de "src" que chama "direta" dentro dela criamos 2 modulos, o "Pai.js" e o "Filho.js"
+
+A comunicação direta é feita com o pai criando criando os parametros e o filho utilizando esses parametros
+
+
+Pai.js \/ 
+
+import React, { useState } from 'react'
+import { Text } from 'react-native'
+import Filho from './Filho'
+
+export default props => {
+    let x = 13
+    let y = 100
+    return(
+        <>
+            <Filho a={x} b={y} />
+            <Filho a={x + 100} b={y + 200} />
+        </>
+    )
+}
+
+
+Filho.js \/
+
+import React, { useState } from 'react'
+import { Text } from 'react-native'
+
+
+export default props => {
+    return(
+        <>
+        <Text>{props.a}</Text>          
+        <Text>{props.b}</Text>          
+        </>
+    )
+}
+
+
+
+
+App.js \/
+
+
+import React from 'react'
+import { Text } from 'react-native'
+import { View, StyleSheet } from 'react-native' //StyleSheet é tipo css
+
+import Pai from './components/direta/Pai'
+
+export default () => ( 
+   <View style={style.NomeQueEuQueira}>
+
+      <Pai />
+      
+   </View> 
+   
+   
+   const style = StyleSheet.create({
+   NomeQueEuQueira: {
+      backgroundColor: '#FFFAFA',
+      flex: 1,      
+      justifyContent: "center",
+      alignItems: "center",
+      padding: 20
+   }
+})
+
