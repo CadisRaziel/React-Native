@@ -1,0 +1,84 @@
+//Diretente do outro exemplo da lista usando map, aqui iremos usar flatlist veja como é mais pratico
+
+
+
+Dentro de ListaProdutosV2.js \/
+
+
+import React, { useState } from 'react'
+import { View, Text, FlatList} from 'react-native'
+import Estilo from '../estilo'
+import produtos from './produtos'
+
+
+//aqui vamos usar FlatList !!! diferente do outro exemplo que estava usando Map
+export default props => {
+
+    //POSSO FAZAR TAMBEM EM FORMA DE FUNCTION !!!
+    //DEIXEI COMENTATO POIS A FLATLIST NÃO APRESENTA DUAS LISTAS IGUAIS !!
+    // const produtoRender = ({ item: p }) => {
+    //     return <Text>{p.id}-> {p.nome} custa R$ {p.preco}</Text>
+    // }
+
+    return (
+        <>
+            <Text style={Estilo.exercicio}>Lista de produtos V2</Text>
+            <FlatList
+                data={produtos}
+                keyExtractor={i => `${i.id}`}
+                renderItem={({ item: p }) => {
+                    return <Text>{p.id}-> {p.nome} custa R$ {p.preco}</Text>
+                }}     
+                //E AQUI EU PASSO A FUNÇÂO !!!
+                // renderItem={produtoRender}      
+            />
+              
+        </>
+    )
+}
+
+//é obrigatorio nas listas ter key, como no outro exemplo que era com o map aqui tambem tem que ter
+//porém no flatlist é só colocarmos assim keyExtractor={i => `${i.id}`}
+
+
+
+Dentro de produtos.js \/ 
+export default [
+    {id: 1, nome: 'Last of Us', preco: 119.99},
+    {id: 2, nome: 'God of War', preco: 90.50},
+    {id: 3, nome: 'Need for Speed', preco: 30.20},
+    {id: 4, nome: 'Medal of honor', preco: 50.00},
+    {id: 5, nome: 'Fight force', preco: 15.99},
+    {id: 6, nome: 'Capitain comand', preco: 10.99},
+    {id: 7, nome: 'Nascar', preco: 9.99},
+]
+
+
+App.js \/
+
+
+import React from 'react'
+import { SafeAreaView, Text } from 'react-native'
+import { StyleSheet } from 'react-native' //StyleSheet é tipo css
+
+import ListaProdutosV2 from './components/produtos/ListaProdutosV2'
+
+export default () => ( 
+   <SafeAreaView style={style.NomeQueEuQueira}>
+
+      <ListaProdutosV2 />
+
+
+   </SafeAreaView> 
+)
+
+
+const style = StyleSheet.create({
+   NomeQueEuQueira: {
+      backgroundColor: '#FFFAFA',
+      flex: 1,      
+      justifyContent: "center",
+      alignItems: "center",
+      padding: 20
+   }
+})
