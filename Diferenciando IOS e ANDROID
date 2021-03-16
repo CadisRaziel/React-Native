@@ -1,0 +1,43 @@
+Diferenciar.js \/
+
+import React, { useState } from 'react'
+import { Text, Platform } from 'react-native'
+import Estilo from './estilo'
+
+export default props => {
+    if (Platform.OS === 'android') {
+        return <Text style={Estilo.exercicio}>Android</Text>
+    } else if (Platform.OS === 'ios') {
+        return <Text style={Estilo.exercicio}>IOS</Text>
+    } else {
+        return <Text style={Estilo.exercicio}>Eita !!</Text>
+    }
+}
+
+
+
+App.js \/
+
+import Diferenciar from './components/Diferenciar'
+import React from 'react'
+import { Text } from 'react-native'
+import { View, StyleSheet } from 'react-native' //StyleSheet é tipo css
+
+export default () => ( 
+   <View style={style.NomeQueEuQueira}>
+
+      <Diferenciar />
+
+   </View> 
+)
+
+
+const style = StyleSheet.create({
+   NomeQueEuQueira: {
+      backgroundColor: '#FFFAFA',
+      flex: 1,      
+      justifyContent: "center",
+      alignItems: "center",
+      padding: 20
+   }
+})
