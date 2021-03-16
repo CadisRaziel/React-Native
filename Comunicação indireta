@@ -1,0 +1,90 @@
+é quando componente pai passa uma função para o filho e o filho gera os dados a partir da função pai
+na direta é o pai criando parametros e variaveis e passando para o filho
+
+
+dentro de "src" eu criei uma pasta "indireta" e dentro dela o componente "Pai.js" e "Filho.js"
+
+
+dentro de Pai.js \/
+
+import React, { useState } from 'react'
+import { View, Text, Button } from 'react-native'
+import Filho from './Filho'
+import Estilo from '../estilo'
+
+
+export default props => {
+    const [texto, setTexto] = useState ('')
+    const [num, setNum] = useState(0)
+
+
+    function exibirValor(numero, texto){
+        setNum(numero) 
+        setTexto(texto)
+    }
+
+    return(
+        <>
+        <Text style={Estilo.exercicio}>
+           {texto} {num}
+        </Text>
+        <Filho 
+        min={1} 
+        max={60}
+        funcao={exibirValor}
+        />
+        </>
+    )
+}
+
+
+dentro de Filho.js \/
+
+import React, { useState } from 'react'
+import { Button } from 'react-native'
+
+
+export default props => {
+    function gerarNumero(min,max){
+    const fator = max - min + 1
+    return parseInt(Math.random() * fator) + min
+    }
+
+    return(
+        <Button
+            title="Executar"
+            onPress={function (){
+                const n = gerarNumero(props.min, props.max)
+                props.funcao(n, 'O valor é: ') //repare que nesse texto 'O valor é' esta feito no modulo pai = const [texto, setTexto] = useState = ''
+            }}
+        />
+
+            
+        
+    )
+}
+
+
+
+dentro de App.js \/
+
+import React from 'react'
+import { Text } from 'react-native'
+import { View, StyleSheet } from 'react-native' //StyleSheet é tipo css
+import Pai from './components/indireta/Pai'
+
+export default () => ( 
+   <View style={style.NomeQueEuQueira}>
+
+      <Pai />
+   </View>
+   
+  const style = StyleSheet.create({
+   NomeQueEuQueira: {
+      backgroundColor: '#FFFAFA',
+      flex: 1,      
+      justifyContent: "center",
+      alignItems: "center",
+      padding: 20
+   }
+})
