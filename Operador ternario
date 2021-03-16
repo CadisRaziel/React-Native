@@ -1,0 +1,21 @@
+import React, { useState } from 'react'
+import { View, Text, Button } from 'react-native'
+import Estilo from './estilo'
+
+export default ({ num = 0 }) => {
+        return (
+            <View>
+                <Text style={Estilo.exercicio}>O Resultado é: </Text>
+                //operador ternario !!!
+                {num % 2 === 0
+                  ?  <Text style={Estilo.exercicio}> Par </Text> 
+                  :  <Text style={Estilo.exercicio}> Impar </Text>                       
+                }
+                
+            </View>
+        )
+ 
+}
+
+
+no App.js coloquei esse codigo <ParImpar num={2}/>, se eu colocar numero impar vai mostrar na tela impar, e se eu por numero par vai mostrar par
