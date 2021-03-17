@@ -1,0 +1,208 @@
+Componente "Mega.JS" \/
+
+
+import React, { Component } from 'react' //importe um Component aqui
+import { Button, Text, TextInput, View } from 'react-native'
+import Estilo from '../estilo'
+import MegaNumero from './MegaNumero'
+
+
+
+//criando classes em componentes  
+//Component herança de um componente 
+export default class Mega extends Component {
+
+    //usando estado dentro do component com classe
+    state = {
+        qtdeNumeros: this.props.qtdeNumeros,
+        numeros: []
+    }
+
+
+    //==============================================================================
+    //metodos de resolução do problema do this da function "alterarQrtNumero"
+    //1 solução
+    // constructor(props){
+    //     super(props)
+        
+    //     this.alterarQtdNumero = this.alterarQtdNumero.bind(this)
+        //o bind(this) vai fazer com que o this da function alterarQtdNumero seja apontado para o this do bind
+        //pois o bind(this) aponta para o objeto correto !
+    // }
+
+
+    //2 solução
+    // <TextInput 
+    //          keyboardType={'numeric'}
+    //          style={{borderBottomWidth: 1}}
+    //             placeholder="Quantidade de numeros"
+    //             value={this.state.qtdeNumeros}
+    //             onChangeText={qtde => this.alterarQtdNumero(qtde)} //criamos uma function aqui
+                    //o this dentro de uma arrow function vai apontar sempre para onde a função foi definida
+                    //no caso esta aqui em baixo "alterarQtdNumero"
+    //          />
+    //          </>
+
+
+
+    //3 solução  (melhor forma)
+    //transformar a function em arrow function
+    //pois o this aponta na arrow sempre pra uma estancia dessa classe
+    // alterarQtdNumero= (qtde) => {
+    //     this.setState({ qtdeNumeros:qtde })
+    // }   
+    
+    //==============================================================================
+
+    //essa função é chamada quando o input é alterado (porém essa function o this não esta apontando para o objeto da classe !)
+    alterarQtdNumero = (qtde) => {
+        this.setState({ qtdeNumeros: +qtde }) //o + transforma de string em numerico !!
+    }
+
+    //para gerar numeros novos e apresenta-los se tiver repitido ele faz novamente
+    gerarNumeroNaoContido = nums => {
+        const novo = parseInt(Math.random() * 60) + 1 
+        return nums.includes(novo) ? this.gerarNumeroNaoContido(nums) : novo
+    }
+
+    //gerar os numeros baseados no state
+    gerarNumeros = () => {
+        const numeros = Array(this.state.qtdeNumeros)
+            .fill() //preencher o array com a quantidade de numero inserida ou seja 6 numeros, então 6 numeros aleatorios 
+            .reduce(n => [...n, this.gerarNumeroNaoContido(n)], []) //gerar os numeros no array
+            .sort((a, b) => a - b) //colcoar os numeros de forma crescente !!
+        this.setState({numeros})
+    }
+
+    exibirNumeros = () => {
+        const nums = this.state.numeros
+        return nums.map(nume => {
+            return <MegaNumero key={nume} num={nume}/>
+        })
+    }
+
+     //outra forma mais simples     de gerar os numeros baseado no state !!
+    //  gerarNumeros = () => {
+    //     const { qtdeNumeros } = this.state
+    //     const numeros = []
+    //     for(let i = 0; i < qtdeNumeros; i++){
+    //         const n = (this.gerarNumeroNaoContido(numeros))
+    //         numeros.push(n) 
+    //     }
+    //     numeros.sort((a,b) => a - b)
+    //     this.setState({numeros})
+    // }
+
+
+    //outra forma de inicializar o state
+    // constructor(props){
+    //     super(props)
+
+    //     this.state = {
+    //         qtdeNumeros: props.qtdeNumeros +1000
+    //     }
+    // }
+
+    //render é usado quando precisamos renderizar um componente na tela, como no node
+    //porém esse render vai retornar JSX
+    //para acessar o props em uma classe sempre devemos por o extends Components
+    //e colocar como "this.props"
+    render() {
+         return (
+             <>
+             <Text style={Estilo.exercicio}>
+                 Gerador de numeros da Mega-Sena                 
+             </Text>
+             <TextInput
+             keyboardType={'numeric'}
+             style={{borderBottomWidth: 1}}
+                placeholder="Quantidade de numeros"
+                value={`${this.state.qtdeNumeros}`}
+                onChangeText={this.alterarQtdNumero}
+             />
+             <Button
+                title='Gerar'
+                onPress={this.gerarNumeros}
+             />
+             <View style={{
+                 marginTop: 20,
+                 flexDirection: 'row',
+                 flexWrap: 'wrap',
+                 justifyContent: 'center'                 
+             }}>    
+                {this.exibirNumeros()}
+            </View>
+
+
+             </>
+         )
+    }
+}
+
+//onChangeText = para alterar o estado do componente
+// style={{borderBottomWidth: 1}} aparece uma linha abaixo do input
+//keyboardType={'numeric'} quando clicar no input ele vai aparecer só o teclado numerico
+//keyboardType={'numeric'} podemos colcoar o teclado que queremos que apareça quando o usuario clicar !!
+
+
+//`${this.state.qtdeNumeros}` = trasnformando de um valor numerico para um tipo string !!
+
+
+
+Componente "MegaNumero.js" \/
+
+import React, { useState } from 'react'
+import { View, Text, StyleSheet } from 'react-native'
+import Estilo from '../estilo'
+
+export default ({num}) => {
+    return(
+        <View style={mega.Container}>        
+     <Text style={[Estilo.exercicio, mega.Num]}> 
+        {num}
+     </Text>
+     </View>
+    )
+}
+
+const mega = StyleSheet.create({
+    Container: {
+        height: 50,
+        width: 50,
+        backgroundColor: '#00FF00',
+        margin: 5,
+        borderRadius: 25
+    },
+    Num: {
+        color: '#FFF'
+    }
+})
+
+
+App.js \/
+
+import React from 'react'
+import { SafeAreaView, Text } from 'react-native'
+import { StyleSheet } from 'react-native' //StyleSheet é tipo css
+
+import Mega from './components/mega/Mega'
+
+export default () => ( 
+   <SafeAreaView style={style.NomeQueEuQueira}>
+
+      <Mega qtdeNumeros={6}/>
+
+         </SafeAreaView> 
+)
+
+
+const style = StyleSheet.create({
+   NomeQueEuQueira: {
+      backgroundColor: '#FFFAFA',
+      flex: 1,      
+      justifyContent: "center",
+      alignItems: "center",
+      padding: 20
+   }
+})
+
