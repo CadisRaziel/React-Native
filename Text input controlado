@@ -1,0 +1,47 @@
+import React, { useState } from 'react'
+import { View, Text, TextInput } from 'react-native'
+import Estilo from './estilo'
+
+export default props => {
+    //criando um componente controlado, ele só altera quando o estado dele é alterado
+    //se eu colocar value={null} ele vai ficar não controlado pois eu vou poder digitar livremente
+    const [nome, setNome] = useState('Teste')
+    return(
+     <View>  
+         <Text>{nome}</Text>
+         <TextInput 
+            placeholder="Digite seu nome"
+            value={nome}
+            onChangeText={nome => setNome(nome)}
+         />
+     </View>
+    )
+}
+
+
+
+app.js \/
+
+import React from 'react'
+import { SafeAreaView, Text } from 'react-native'
+import { StyleSheet } from 'react-native' //StyleSheet é tipo css
+
+import DigiteSeuNome from './components/DigiteSeuNome'
+
+export default () => ( 
+   <SafeAreaView style={style.NomeQueEuQueira}>
+
+      <DigiteSeuNome />
+      
+         </SafeAreaView> 
+)
+
+const style = StyleSheet.create({
+   NomeQueEuQueira: {
+      backgroundColor: '#FFFAFA',
+      flex: 1,      
+      justifyContent: "center",
+      alignItems: "center",
+      padding: 20
+   }
+})
