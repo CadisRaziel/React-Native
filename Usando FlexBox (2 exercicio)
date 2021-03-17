@@ -1,0 +1,81 @@
+
+FlexBoxV2.js \/
+
+import React, { useState } from 'react'
+import { View, StyleSheet} from 'react-native'
+import Quadrado from './Quadrado'
+
+export default props => {
+    return(
+    <View style={style.FlexV1}>
+    <Quadrado />
+    <Quadrado cor='#28C76F'/>
+    <Quadrado cor='#F55555'/>
+    <Quadrado cor='#E96D71'/>
+    <Quadrado cor='#E80505'/>
+    </View>
+    )
+}
+
+const style = StyleSheet.create({
+    FlexV1: {       
+        flex: 1,
+        width: '100%',
+        alignItems: 'flex-end',
+        justifyContent: 'space-evenly',
+        backgroundColor: '#000'
+    }
+})
+
+
+
+
+
+
+
+Quadrado.js \/
+
+import React, { useState } from 'react'
+import { View, Text } from 'react-native'
+
+
+export default props => {
+    const lado = 50
+    return(
+     <View style={{
+        height: lado,
+        width: lado,
+        backgroundColor: props.cor || '#F067B4'
+     }}/>      
+    )
+}
+
+
+
+
+App.js \/
+
+import React from 'react'
+import { SafeAreaView, Text } from 'react-native'
+import { StyleSheet } from 'react-native' //StyleSheet é tipo css
+
+import FlexBoxV1 from './components/layout/FlexBoxV1'
+
+export default () => ( 
+   <SafeAreaView style={style.NomeQueEuQueira}>
+
+      <FlexBoxV1 />
+
+         </SafeAreaView> 
+)
+
+
+const style = StyleSheet.create({
+   NomeQueEuQueira: {
+      backgroundColor: '#FFFAFA',
+      flex: 1,      
+      justifyContent: "center",
+      alignItems: "center",
+      padding: 20
+   }
+})
