@@ -1,0 +1,91 @@
+// import React, { Component } from 'react' //importe um Component aqui
+// import { Text, TextInput } from 'react-native'
+// import Estilo from '../estilo'
+
+
+//criando classes em componentes  
+//Component herança de um componente 
+// export default class Mega extends Component {
+
+//     //usando estado dentro do component com classe
+//     state = {
+//         qtdeNumeros: this.props.qtdeNumeros
+//     }
+
+
+    //==============================================================================
+    //metodos de resolução do problema do this da function "alterarQrtNumero"
+    //1 solução
+    // constructor(props){
+    //     super(props)
+        
+    //     this.alterarQtdNumero = this.alterarQtdNumero.bind(this)
+        //o bind(this) vai fazer com que o this da function alterarQtdNumero seja apontado para o this do bind
+        //pois o bind(this) aponta para o objeto correto !
+    // }
+
+
+    //2 solução
+    // <TextInput 
+    //          keyboardType={'numeric'}
+    //          style={{borderBottomWidth: 1}}
+    //             placeholder="Quantidade de numeros"
+    //             value={this.state.qtdeNumeros}
+    //             onChangeText={qtde => this.alterarQtdNumero(qtde)} //criamos uma function aqui
+                    //o this dentro de uma arrow function vai apontar sempre para onde a função foi definida
+                    //no caso esta aqui em baixo "alterarQtdNumero"
+    //          />
+    //          </>
+
+
+
+    //3 solução  (melhor forma)
+    //transformar a function em arrow function
+    //pois o this aponta na arrow sempre pra uma estancia dessa classe
+    // alterarQtdNumero= (qtde) => {
+    //     this.setState({ qtdeNumeros:qtde })
+    // }   
+    
+    //==============================================================================
+
+    //essa função é chamada quando o input é alterado (porém essa function o this não esta apontando para o objeto da classe !)
+    // alterarQtdNumero = (qtde) => {
+    //     this.setState({ qtdeNumeros:qtde })
+    // }
+
+    //outra forma de inicializar o state
+    // constructor(props){
+    //     super(props)
+
+    //     this.state = {
+    //         qtdeNumeros: props.qtdeNumeros +1000
+    //     }
+    // }
+
+    //render é usado quando precisamos renderizar um componente na tela, como no node
+    //porém esse render vai retornar JSX
+    //para acessar o props em uma classe sempre devemos por o extends Components
+    // colocar como "this.props"
+    // render() {
+    //      return (
+    //          <>
+    //          <Text style={Estilo.exercicio}>
+    //              Gerador de numeros da Mega-Sena
+    //              {this.state.qtdeNumeros}
+    //          </Text>
+    //          <TextInput 
+    //          keyboardType={'numeric'}
+    //          style={{borderBottomWidth: 1}}
+    //             placeholder="Quantidade de numeros"
+    //             value={this.state.qtdeNumeros}
+    //             onChangeText={this.alterarQtdNumero}
+    //          />
+    //          </>
+    //      )
+    // }
+}
+
+//onChangeText = para alterar o estado do componente
+// style={{borderBottomWidth: 1}} aparece uma linha abaixo do input
+//keyboardType={'numeric'} quando clicar no input ele vai aparecer só o teclado numerico
+//keyboardType={'numeric'} podemos colcoar o teclado que queremos que apareça quando o usuario clicar !!
