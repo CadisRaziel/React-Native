@@ -1,6 +1,9 @@
 Abra o terminal e digite "studio.sh", isso vai abrir o android studio, nas conigurações do android studio clique em AVD manager para abrir o emulador(abra ele)
-em seguida crie uma pasta em algum lugar e entre nessa pasta pelo terminal e digite "npx react-native init NOME DO PROJETO"
+em seguida entre na pasta Documentos e digite "npx react-native init NOME DO PROJETO"
+para iniciar o emulador abra uma aba no CLI e digite : emulator -list-avds    (isso vai mostrar os emuladores que voce tem)
+para iniciar o emulador digite : emulator -avd Pixel_2_API_29_NOVO (emulator -avd "nome do celular")
 em seguida no terminal vá ate a pasta criada e digite "npx react-native start"
 em quanto o arquivo compila abra outra aba no terminal e digite "npx react-native run-android"
 e pronto é só olhar no emulador o projeto do react abrindo
 aproveite o terminal e digite "code ." para abrir o vs code
+
