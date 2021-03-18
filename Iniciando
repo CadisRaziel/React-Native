@@ -7,3 +7,7 @@ em quanto o arquivo compila abra outra aba no terminal e digite "npx react-nativ
 e pronto é só olhar no emulador o projeto do react abrindo
 aproveite o terminal e digite "code ." para abrir o vs code
 
+imagine que esta dando um erro ou um bug
+faça a seguinte instrução, antes de abrir o 'react-native start' faça isso no terminal digite 'react-native log-android'
+antes do codigo digite isso exemplo : console.debug(typeof this.state.displayValue)
+e starte o projeto, ao clicar nos numeros da calculadora repare que no terminal aparece o que voce esta fazendo e la pode te dar o erro
