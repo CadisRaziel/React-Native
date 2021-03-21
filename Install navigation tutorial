@@ -1,0 +1,19 @@
+crie o projeto no terminal e nao abra ele, antes na pasta do projeto instale tudo isso abaixo \/ depois que instalar ai abre ele e o emulador
+
+1º npm install @react-navigation/native
+2º npm install react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view
+
+3º Instalar uma das estrategias de navegação se vai ser : Stack, Tab ou Drawer
+Stack: npm install @react-navigation/stack
+tab: npm install @react-navigation/bottom-tabs
+Drawer: npm install @react-navigation/drawer
+
+4º instalar react-native-elements
+Conjunto de elementos visuais para react-native
+site: https://reactnativeelements.com/
+instale: npm i react-native-elements --save
+
+no mesmo site tem o Install react-native-vector-icons
+instale: npm i --save react-native-vector-icons
+
+e pronto! 
