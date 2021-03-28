@@ -1,0 +1,5 @@
+para os icones funcionarem eu preciso fazer esse passo
+ctrl+P e colar "android/app/build.gradle"
+e no final do codigo que aparecer cole isso: apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+e deopis feche tudo e de um :yarn link
+e abra tudo novamente
