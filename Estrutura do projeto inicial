@@ -1,0 +1,24 @@
+app.json = nome do app
+
+
+
+//arquivos de formatação tanto do vscode quanto do nosso codigo para o nosso codigo sempre seguir o padrao
+.editorconfig
+.eslintrc.js
+.prettierrc.js = detalhe ao abrir ele eu alterei bracketSpacing: true, (estava falso)
+essa funcionalidade vai fazer com que {} sempre de um espaço caso eu esqueça na variavel ou const pra deixa elas separadas
+
+
+.flowconfig = é se fossemos usasr uma linguagem flow
+
+.buckconfig = só detalhe tecnico
+
+//detalhes de git
+.gitatributes
+.gitignore
+
+ .watchmanconfig = detalhe para ver depois
+ 
+//configurações do bunddle
+babel.config.js
+metro.config.js
